@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Payment Verification | धन आकर्षण रहस्य</title>
+  <title>Payment Verification | The Secret to Attract Wealth</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -12,9 +12,10 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       min-height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 24px 16px;
+      padding: 32px 16px;
     }
     .card {
       background: rgba(22, 18, 14, 0.95);
@@ -23,7 +24,7 @@
       box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 35px rgba(212, 175, 55, 0.2);
       max-width: 520px;
       width: 100%;
-      padding: 36px 28px;
+      padding: 40px 30px;
       text-align: center;
       animation: fadeIn 0.3s ease-out;
     }
@@ -61,7 +62,7 @@
       font-size: 26px;
       font-weight: 800;
       color: #fcedcf;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       line-height: 1.3;
     }
     .tagline {
@@ -76,12 +77,12 @@
       padding: 16px 20px;
       margin-bottom: 24px;
       text-align: left;
-      font-size: 13px;
+      font-size: 13.5px;
     }
     .order-row {
       display: flex;
       justify-content: space-between;
-      padding: 7px 0;
+      padding: 8px 0;
       border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
     }
     .order-row:last-child { border-bottom: none; }
@@ -102,9 +103,9 @@
     }
     .download-desc {
       font-size: 13px;
-      color: #b5a489;
-      margin-bottom: 18px;
+      color: #c7b69c;
       line-height: 1.5;
+      margin-bottom: 18px;
     }
     .btn-download {
       display: inline-flex;
@@ -112,57 +113,70 @@
       justify-content: center;
       gap: 10px;
       width: 100%;
-      background: linear-gradient(135deg, #f5d47a 0%, #d4af37 50%, #b8860b 100%);
-      color: #120e09;
-      font-size: 17px;
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+      color: #ffffff;
       font-weight: 800;
-      padding: 16px 24px;
-      border-radius: 12px;
+      font-size: 15px;
+      padding: 15px 20px;
+      border-radius: 10px;
       text-decoration: none;
-      box-shadow: 0 6px 25px rgba(212, 175, 55, 0.45);
-      transition: all 0.25s;
+      box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4);
+      transition: all 0.25s ease;
+      cursor: pointer;
     }
     .btn-download:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.65);
-      filter: brightness(1.07);
+      box-shadow: 0 6px 28px rgba(34, 197, 94, 0.6);
+      background: linear-gradient(135deg, #34d399 0%, #16a34a 100%);
     }
     .instructions {
-      background: rgba(255, 255, 255, 0.03);
+      font-size: 12px;
+      color: #a89880;
+      line-height: 1.6;
+      background: rgba(0, 0, 0, 0.3);
       border-radius: 10px;
       padding: 14px 16px;
-      font-size: 12px;
-      color: #9f8f78;
-      text-align: left;
-      line-height: 1.6;
       margin-bottom: 20px;
+      text-align: left;
     }
-    .instructions strong { color: #e5d5be; }
-    .whatsapp-btn {
+    .instructions strong {
+      color: #fcedcf;
+    }
+    .btn-support {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      color: #25d366;
+      color: #fcedcf;
+      text-decoration: none;
       font-size: 13px;
       font-weight: 600;
-      text-decoration: none;
-      padding: 8px 14px;
+      padding: 10px 18px;
       border-radius: 8px;
-      border: 1px solid rgba(37, 211, 102, 0.3);
-      background: rgba(37, 211, 102, 0.08);
-      transition: all 0.2s;
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      background: rgba(212, 175, 55, 0.1);
+      transition: all 0.2s ease;
+      margin-top: 6px;
+    }
+    .btn-support:hover {
+      background: rgba(212, 175, 55, 0.2);
+      color: #ffffff;
     }
     .home-link {
       display: block;
-      margin-top: 16px;
+      margin-top: 18px;
       font-size: 13px;
-      color: #7b6c56;
+      color: #8f806a;
       text-decoration: none;
+      transition: color 0.2s;
+    }
+    .home-link:hover {
+      color: #fcedcf;
+      text-decoration: underline;
     }
     .spinner {
-      width: 38px;
-      height: 38px;
+      width: 42px;
+      height: 42px;
       border: 3px solid rgba(212, 175, 55, 0.2);
       border-top-color: #f5d47a;
       border-radius: 50%;
@@ -170,19 +184,65 @@
       margin: 20px auto;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* FOOTER */
+    .blix-footer-wrap {
+      margin-top: 36px;
+      text-align: center;
+      font-size: 13px;
+      color: #9ca3af;
+      width: 100%;
+      max-width: 600px;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px 18px;
+      margin-bottom: 14px;
+    }
+    .footer-links a {
+      color: #9ca3af;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: #ffffff;
+    }
+    .footer-brand {
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: #83786a;
+      margin-bottom: 6px;
+    }
+    .footer-brand span {
+      color: #ffffff;
+      font-weight: 700;
+    }
+    .footer-email {
+      font-size: 12px;
+      color: #9ca3af;
+    }
+    .footer-email a {
+      color: #d4af37;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
+  <!-- LOADING STATE -->
   <div class="card" id="state-loading">
     <div class="spinner"></div>
-    <h1>पेमेंट वेरिफाई हो रहा है...</h1>
-    <p class="tagline">Cashfree से भुगतान की पुष्टि की जा रही है, कृपया प्रतीक्षा करें।</p>
+    <h1>Verifying Payment...</h1>
+    <p class="tagline">Confirming payment with Cashfree. Please wait a moment.</p>
   </div>
 
+  <!-- SUCCESS STATE -->
   <div class="card" id="state-success" style="display: none;">
     <div class="badge-icon badge-success">✓</div>
-    <h1>भुगतान सफल रहा! 🎉</h1>
-    <p class="tagline">Payment Verified • धन आकर्षण रहस्य eBook</p>
+    <h1>Payment Successful! 🎉</h1>
+    <p class="tagline">Payment Verified • The Secret to Attract Wealth eBook</p>
 
     <div class="order-box">
       <div class="order-row">
@@ -190,51 +250,50 @@
         <span class="order-val" id="res-order-id">-</span>
       </div>
       <div class="order-row">
-        <span class="order-label">Customer Name:</span>
-        <span class="order-val" id="res-name">-</span>
-      </div>
-      <div class="order-row">
-        <span class="order-label">Email ID:</span>
-        <span class="order-val" id="res-email">-</span>
+        <span class="order-label">Customer Mobile:</span>
+        <span class="order-val" id="res-phone">-</span>
       </div>
       <div class="order-row">
         <span class="order-label">Amount Paid:</span>
         <span class="order-val" id="res-amount">₹299</span>
       </div>
       <div class="order-row">
-        <span class="order-label">Status:</span>
+        <span class="order-label">Payment Status:</span>
         <span class="order-val" style="color: #6ee7b7;">✅ PAID (Verified)</span>
       </div>
     </div>
 
     <div class="download-card">
-      <div class="download-title">📥 आपकी ई-बुक डाउनलोड के लिए तैयार है</div>
+      <div class="download-title">📥 Your eBook is Ready for Download</div>
       <p class="download-desc">
-        नीचे दिए गए बटन पर क्लिक करके Google Drive फोल्डर खोलें। इसमें संपूर्ण 84-पृष्ठ की PDF गाइड, दैनिक अभ्यास और धन आकर्षण मंत्र शामिल हैं।
+        Click the button below to open your secure Google Drive folder containing the complete 84-page PDF guide, daily exercises, and practice rituals.
       </p>
       <a href="https://drive.google.com/drive/folders/1oZwLB5KYi3NjMGEDx-5dLF9fKt_pstpe?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-download" id="res-product-link">
-        <span>🚀 Google Drive पर eBook खोलें व डाउनलोड करें</span>
+        <span>🚀 Open &amp; Download eBook on Google Drive</span>
         <span>➔</span>
       </a>
     </div>
 
     <div class="instructions">
-      <strong>महत्वपूर्ण सूचना (Helpful Instructions):</strong><br>
-      • कृपया इस Google Drive लिंक को अपने ब्राउज़र में बुकमार्क (Bookmark) कर लें ताकि आप कभी भी इसे पढ़ सकें।<br>
-      • PDF को अपने फ़ोन या लैपटॉप पर डाउनलोड करके सुरक्षित रख लें।
+      <strong>Helpful Instructions:</strong><br>
+      • Bookmark this Google Drive link in your browser so you can access your eBook anytime.<br>
+      • Download and save the PDF file directly to your phone or computer for offline reading.
     </div>
 
-    <a href="https://wa.me/919910124156?text=Hi%2C%20I%20have%20purchased%20Dhan%20Akarshan%20Rahasya" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
-      <span>💬 WhatsApp Support पर संपर्क करें</span>
-    </a>
+    <div>
+      <a href="mailto:tonikpvt@gmail.com?subject=Order%20Help%20-%20The%20Secret%20to%20Attract%20Wealth" class="btn-support">
+        ✉ Contact Customer Support (tonikpvt@gmail.com)
+      </a>
+    </div>
 
-    <a href="/" class="home-link">← वापस होमपेज पर जाएं (Back to Homepage)</a>
+    <a href="/" class="home-link">← Back to Homepage</a>
   </div>
 
+  <!-- FAILED / PENDING STATE -->
   <div class="card" id="state-failed" style="display: none;">
     <div class="badge-icon badge-pending">!</div>
-    <h1 id="fail-title">भुगतान अधूरा या लंबित है</h1>
-    <p class="tagline" id="fail-desc">Payment Incomplete / Pending</p>
+    <h1 id="fail-title">Payment Incomplete or Pending</h1>
+    <p class="tagline" id="fail-desc">Payment Verification Status</p>
 
     <div class="order-box">
       <div class="order-row">
@@ -247,34 +306,37 @@
       </div>
     </div>
 
-    <p style="font-size: 13px; color: #b5a489; margin-bottom: 20px; line-height: 1.5;">
-      यदि आपके खाते से पैसे कट चुके हैं, तो कृपया 5-10 मिनट प्रतीक्षा करें या सहायता के लिए व्हाट्सएप पर मैसेज भेजें।
+    <p style="font-size: 13.5px; color: #b5a489; margin-bottom: 20px; line-height: 1.5;">
+      If amount was deducted from your account, please allow 2-5 minutes for payment confirmation, or reach out to our customer support.
     </p>
 
-    <a href="/?buy=1" class="btn-download" style="background: linear-gradient(135deg, #f5d47a 0%, #d4af37 100%);">
-      पुनः प्रयास करें (Retry Payment)
+    <a href="/?buy=1" class="btn-download" style="background: linear-gradient(135deg, #f5d47a 0%, #d4af37 100%); color: #120e06; margin-bottom: 12px;">
+      Retry Payment
     </a>
 
-    <br><br>
-    <a href="mailto:tonikpvt@gmail.com?subject=Payment%20Pending%20Support%20-%20BLIX%20ENTERPRISE" class="whatsapp-btn" style="background: rgba(212, 175, 55, 0.15); border: 1px solid rgba(212, 175, 55, 0.4); color: #fcedcf;">
-      ✉ Contact Support (tonikpvt@gmail.com)
-    </a>
+    <div>
+      <a href="mailto:tonikpvt@gmail.com?subject=Payment%20Pending%20Support%20-%20BLIX%20ENTERPRISE" class="btn-support">
+        ✉ Contact Support (tonikpvt@gmail.com)
+      </a>
+    </div>
+
+    <a href="/" class="home-link">← Back to Homepage</a>
   </div>
 
   <!-- BLIX ENTERPRISE FOOTER -->
-  <footer style="margin-top: 40px; text-align: center; font-size: 13px; color: #9ca3af; width: 100%; max-width: 600px;">
-    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 12px 18px; margin-bottom: 16px;">
-      <a href="/contact.html" style="color: #9ca3af; text-decoration: none;">Contact</a>
-      <a href="/terms.html" style="color: #9ca3af; text-decoration: none;">Terms &amp; Conditions</a>
-      <a href="/privacy.html" style="color: #9ca3af; text-decoration: none;">Privacy Policy</a>
-      <a href="/refund.html" style="color: #9ca3af; text-decoration: none;">Refund Policy</a>
-      <a href="/license.html" style="color: #9ca3af; text-decoration: none;">License Terms</a>
+  <footer class="blix-footer-wrap">
+    <div class="footer-links">
+      <a href="/contact.html">Contact</a>
+      <a href="/terms.html">Terms &amp; Conditions</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/refund.html">Refund Policy</a>
+      <a href="/license.html">License Terms</a>
     </div>
-    <div style="letter-spacing: 2px; text-transform: uppercase; font-size: 12px; color: #83786a; margin-bottom: 8px;">
-      PRODUCT BY <span style="color: #ffffff; font-weight: 700;">BLIX ENTERPRISE</span>
+    <div class="footer-brand">
+      PRODUCT BY <span>BLIX ENTERPRISE</span>
     </div>
-    <div style="font-size: 12px; color: #9ca3af;">
-      OFFICIAL CUSTOMER SUPPORT EMAIL: <a href="mailto:tonikpvt@gmail.com" style="color: #d4af37; text-decoration: none;">tonikpvt@gmail.com</a>
+    <div class="footer-email">
+      OFFICIAL CUSTOMER SUPPORT EMAIL: <a href="mailto:tonikpvt@gmail.com">tonikpvt@gmail.com</a>
     </div>
   </footer>
 
@@ -299,7 +361,7 @@
         }
       } catch (err) {
         console.error('Verify error:', err);
-        showError(err.message, 'NETWORK_ERROR');
+        showError(err.message || 'Failed to verify order status', 'NETWORK_ERROR');
       }
     }
 
@@ -310,8 +372,7 @@
 
       document.getElementById('res-order-id').textContent = data.order_id || '-';
       const cust = data.customer_details || {};
-      document.getElementById('res-name').textContent = cust.customer_name || 'Valued Customer';
-      document.getElementById('res-email').textContent = cust.customer_email || 'Registered';
+      document.getElementById('res-phone').textContent = cust.customer_phone || cust.customer_name || 'Registered Customer';
       if (data.order_amount) {
         document.getElementById('res-amount').textContent = '₹' + data.order_amount;
       }
@@ -334,7 +395,7 @@
       document.getElementById('state-success').style.display = 'none';
       document.getElementById('state-failed').style.display = 'block';
 
-      document.getElementById('fail-title').textContent = 'सत्यापन में समस्या आई';
+      document.getElementById('fail-title').textContent = 'Verification Error';
       document.getElementById('fail-desc').textContent = msg;
       document.getElementById('fail-status').textContent = code;
     }
