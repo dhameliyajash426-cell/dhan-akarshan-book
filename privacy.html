@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | BLIX ENTERPRISE</title>
+  <meta name="description" content="Privacy Policy explaining how BLIX ENTERPRISE collects, protects, and uses customer information for digital product orders.">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at 50% 0%, #1c1611 0%, #0a0908 100%);
+      color: #d1c7b7;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.75;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .top-bar {
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      background: rgba(10, 9, 8, 0.9);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 16px 24px;
+    }
+    .top-bar-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand-logo {
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: #ffffff;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .brand-logo span { color: #d4af37; }
+    .back-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #fcedcf;
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+    .back-home-btn:hover {
+      background: rgba(212, 175, 55, 0.22);
+      color: #ffffff;
+      transform: translateX(-2px);
+    }
+    .main-content {
+      flex: 1;
+      max-width: 860px;
+      width: 100%;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .policy-card {
+      background: rgba(19, 16, 13, 0.95);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 18px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(212, 175, 55, 0.05);
+      padding: 44px 36px;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #f5d47a;
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      padding: 4px 12px;
+      border-radius: 50px;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: #fcedcf;
+      margin-bottom: 24px;
+      line-height: 1.25;
+    }
+    .section-block {
+      margin-bottom: 28px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .section-block:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #f5d47a;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    p {
+      font-size: 15px;
+      color: #d1c7b7;
+      margin-bottom: 10px;
+    }
+    ul {
+      margin: 10px 0 10px 20px;
+      color: #c9bfae;
+      font-size: 14.5px;
+    }
+    li {
+      margin-bottom: 6px;
+    }
+    .security-callout {
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.25);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 14px 0;
+    }
+    .security-callout p {
+      color: #86efac;
+      font-size: 14px;
+      margin: 0;
+    }
+    a.contact-link {
+      color: #f5d47a;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    a.contact-link:hover {
+      text-decoration: underline;
+      color: #ffffff;
+    }
+    .bottom-back {
+      margin-top: 36px;
+      text-align: center;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* FOOTER */
+    .blix-footer {
+      background: #090807;
+      border-top: 1px solid rgba(212, 175, 55, 0.22);
+      padding: 44px 20px 36px;
+      text-align: center;
+      width: 100%;
+      margin-top: auto;
+    }
+    .blix-footer-container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+    .blix-footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 12px 18px;
+    }
+    .blix-footer-link {
+      color: #9ca3af;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.25s ease, transform 0.25s ease;
+    }
+    .blix-footer-link:hover, .blix-footer-link.active {
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+    .blix-footer-dot { color: #4b5563; font-size: 11px; }
+    .blix-footer-brand {
+      font-size: 13px;
+      letter-spacing: 2px;
+      color: #83786a;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .blix-footer-brand .blix-highlight {
+      color: #ffffff;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+    }
+    .blix-footer-support {
+      font-size: 13px;
+      color: #9ca3af;
+      letter-spacing: 0.5px;
+    }
+    .blix-support-email {
+      color: #d4af37;
+      text-decoration: none;
+      font-weight: 600;
+      margin-left: 4px;
+      transition: color 0.2s ease;
+    }
+    .blix-support-email:hover { color: #fcedcf; text-decoration: underline; }
+    .blix-footer-copyright { font-size: 12px; color: #524b42; }
+    @media (max-width: 640px) {
+      .policy-card { padding: 28px 20px; }
+      h1 { font-size: 25px; }
+      .blix-footer-dot { display: none; }
+      .blix-footer-nav { gap: 10px 14px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <a href="/" class="brand-logo">
+        <span>✦</span> BLIX ENTERPRISE
+      </a>
+      <a href="/" class="back-home-btn">
+        ← Back to Home
+      </a>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <article class="policy-card">
+      <span class="badge">Data Protection</span>
+      <h1>Privacy Policy</h1>
+
+      <div class="section-block">
+        <h2>1. Information We Collect</h2>
+        <p>To process your digital purchases and deliver orders reliably, BLIX ENTERPRISE may collect the following information:</p>
+        <ul>
+          <li>Customer mobile number / WhatsApp number</li>
+          <li>Order ID and transaction reference number</li>
+          <li>Payment status and timestamp</li>
+          <li>Purchase history and download access records</li>
+          <li>Basic technical information required for website functionality (such as browser type and device characteristics)</li>
+        </ul>
+      </div>
+
+      <div class="section-block">
+        <h2>2. How We Use Information</h2>
+        <p>Customer information is used strictly for legitimate business and transactional purposes, including:</p>
+        <ul>
+          <li>Processing orders and digital purchases</li>
+          <li>Verifying payments with authorized payment gateways</li>
+          <li>Delivering digital products and access links</li>
+          <li>Providing prompt customer support</li>
+          <li>Preventing fraudulent or unauthorized transactions</li>
+          <li>Maintaining transaction and accounting records</li>
+        </ul>
+      </div>
+
+      <div class="section-block">
+        <h2>3. Payment Security</h2>
+        <p>All payments are securely processed through Cashfree Payments or other RBI-authorized payment providers.</p>
+        <div class="security-callout">
+          <p>🔒 <strong>Zero Sensitive Financial Data Stored:</strong> We do NOT store customers' UPI PINs, bank account credentials, credit/debit card numbers, or CVV security details on our servers. All financial processing is handled entirely by Cashfree's PCI-DSS compliant infrastructure.</p>
+        </div>
+      </div>
+
+      <div class="section-block">
+        <h2>4. Information Sharing</h2>
+        <p><strong>We do not sell, rent, or trade customer personal information.</strong></p>
+        <p>Information may only be shared with authorized payment processors, secure cloud hosting providers, and technical service providers strictly when necessary to operate our website or fulfill digital product purchases.</p>
+      </div>
+
+      <div class="section-block">
+        <h2>5. Data Security</h2>
+        <p>We use reasonable and modern administrative, physical, and electronic security measures to safeguard customer information against unauthorized access, loss, or alteration.</p>
+      </div>
+
+      <div class="section-block">
+        <h2>6. Data Retention</h2>
+        <p>Customer transaction information may be retained for legitimate business, accounting, tax, legal, and regulatory compliance purposes for the duration required by applicable Indian laws.</p>
+      </div>
+
+      <div class="section-block">
+        <h2>7. Customer Privacy Rights</h2>
+        <p>Customers may contact us regarding their personal data, transaction queries, or privacy-related requests, subject to applicable laws.</p>
+      </div>
+
+      <div class="section-block">
+        <h2>8. Policy Updates</h2>
+        <p>We may update this Privacy Policy periodically when required. The latest version will always be posted on this page with immediate effect.</p>
+      </div>
+
+      <div class="section-block">
+        <h2>9. Contact Us</h2>
+        <p>For any questions or privacy inquiries, please reach out to our data privacy representative at:</p>
+        <p>Customer Support Email: <a href="mailto:tonikpvt@gmail.com" class="contact-link">tonikpvt@gmail.com</a></p>
+      </div>
+
+      <div class="bottom-back">
+        <a href="/" class="back-home-btn">
+          ← Back to eBook Landing Page
+        </a>
+      </div>
+    </article>
+  </main>
+
+  <footer class="blix-footer">
+    <div class="blix-footer-container">
+      <nav class="blix-footer-nav" aria-label="Footer Navigation">
+        <a href="contact.html" class="blix-footer-link">Contact</a>
+        <span class="blix-footer-dot">•</span>
+        <a href="terms.html" class="blix-footer-link">Terms &amp; Conditions</a>
+        <span class="blix-footer-dot">•</span>
+        <a href="privacy.html" class="blix-footer-link active">Privacy Policy</a>
+        <span class="blix-footer-dot">•</span>
+        <a href="refund.html" class="blix-footer-link">Refund Policy</a>
+        <span class="blix-footer-dot">•</span>
+        <a href="license.html" class="blix-footer-link">License Terms</a>
+      </nav>
+
+      <div class="blix-footer-brand">
+        PRODUCT BY <span class="blix-highlight">BLIX ENTERPRISE</span>
+      </div>
+
+      <div class="blix-footer-support">
+        OFFICIAL CUSTOMER SUPPORT EMAIL: 
+        <a href="mailto:tonikpvt@gmail.com" class="blix-support-email">tonikpvt@gmail.com</a>
+      </div>
+
+      <div class="blix-footer-copyright">
+        © 2026 BLIX ENTERPRISE. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

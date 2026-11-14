@@ -1,0 +1,17 @@
+# Environment & Secrets
+.env
+.env.local
+
+# Backups & Temporary files
+*.backup
+*.tmp
+.DS_Store
+
+# Customer data & logs
+orders.json
+*.log
+
+# Dependencies & Python cache
+node_modules/
+__pycache__/
+*.pyc

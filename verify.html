@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Verification | धन आकर्षण रहस्य</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at 50% 10%, #201a14 0%, #0d0b09 100%);
+      color: #fdfaf4;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+    .card {
+      background: rgba(22, 18, 14, 0.95);
+      border: 1px solid rgba(212, 175, 55, 0.45);
+      border-radius: 20px;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 35px rgba(212, 175, 55, 0.2);
+      max-width: 520px;
+      width: 100%;
+      padding: 36px 28px;
+      text-align: center;
+      animation: fadeIn 0.3s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .badge-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      margin-bottom: 20px;
+    }
+    .badge-success {
+      background: linear-gradient(135deg, #18522e 0%, #22c55e 100%);
+      border: 3px solid rgba(110, 231, 183, 0.5);
+      box-shadow: 0 0 30px rgba(34, 197, 94, 0.4);
+      color: #ffffff;
+    }
+    .badge-pending {
+      background: rgba(234, 179, 8, 0.2);
+      border: 3px solid rgba(234, 179, 8, 0.5);
+      color: #facc15;
+    }
+    .badge-error {
+      background: rgba(239, 68, 68, 0.2);
+      border: 3px solid rgba(239, 68, 68, 0.5);
+      color: #f87171;
+    }
+    h1 {
+      font-size: 26px;
+      font-weight: 800;
+      color: #fcedcf;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .tagline {
+      font-size: 14px;
+      color: #c7b69c;
+      margin-bottom: 24px;
+    }
+    .order-box {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      text-align: left;
+      font-size: 13px;
+    }
+    .order-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 7px 0;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+    }
+    .order-row:last-child { border-bottom: none; }
+    .order-label { color: #a89880; }
+    .order-val { color: #f5d47a; font-weight: 600; word-break: break-all; }
+    .download-card {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 100%);
+      border: 2px dashed rgba(212, 175, 55, 0.5);
+      border-radius: 14px;
+      padding: 24px 20px;
+      margin-bottom: 24px;
+    }
+    .download-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fcedcf;
+      margin-bottom: 8px;
+    }
+    .download-desc {
+      font-size: 13px;
+      color: #b5a489;
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      background: linear-gradient(135deg, #f5d47a 0%, #d4af37 50%, #b8860b 100%);
+      color: #120e09;
+      font-size: 17px;
+      font-weight: 800;
+      padding: 16px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 6px 25px rgba(212, 175, 55, 0.45);
+      transition: all 0.25s;
+    }
+    .btn-download:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.65);
+      filter: brightness(1.07);
+    }
+    .instructions {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 12px;
+      color: #9f8f78;
+      text-align: left;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .instructions strong { color: #e5d5be; }
+    .whatsapp-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: #25d366;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(37, 211, 102, 0.3);
+      background: rgba(37, 211, 102, 0.08);
+      transition: all 0.2s;
+    }
+    .home-link {
+      display: block;
+      margin-top: 16px;
+      font-size: 13px;
+      color: #7b6c56;
+      text-decoration: none;
+    }
+    .spinner {
+      width: 38px;
+      height: 38px;
+      border: 3px solid rgba(212, 175, 55, 0.2);
+      border-top-color: #f5d47a;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 20px auto;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div class="card" id="state-loading">
+    <div class="spinner"></div>
+    <h1>पेमेंट वेरिफाई हो रहा है...</h1>
+    <p class="tagline">Cashfree से भुगतान की पुष्टि की जा रही है, कृपया प्रतीक्षा करें।</p>
+  </div>
+
+  <div class="card" id="state-success" style="display: none;">
+    <div class="badge-icon badge-success">✓</div>
+    <h1>भुगतान सफल रहा! 🎉</h1>
+    <p class="tagline">Payment Verified • धन आकर्षण रहस्य eBook</p>
+
+    <div class="order-box">
+      <div class="order-row">
+        <span class="order-label">Order ID:</span>
+        <span class="order-val" id="res-order-id">-</span>
+      </div>
+      <div class="order-row">
+        <span class="order-label">Customer Name:</span>
+        <span class="order-val" id="res-name">-</span>
+      </div>
+      <div class="order-row">
+        <span class="order-label">Email ID:</span>
+        <span class="order-val" id="res-email">-</span>
+      </div>
+      <div class="order-row">
+        <span class="order-label">Amount Paid:</span>
+        <span class="order-val" id="res-amount">₹299</span>
+      </div>
+      <div class="order-row">
+        <span class="order-label">Status:</span>
+        <span class="order-val" style="color: #6ee7b7;">✅ PAID (Verified)</span>
+      </div>
+    </div>
+
+    <div class="download-card">
+      <div class="download-title">📥 आपकी ई-बुक डाउनलोड के लिए तैयार है</div>
+      <p class="download-desc">
+        नीचे दिए गए बटन पर क्लिक करके Google Drive फोल्डर खोलें। इसमें संपूर्ण 84-पृष्ठ की PDF गाइड, दैनिक अभ्यास और धन आकर्षण मंत्र शामिल हैं।
+      </p>
+      <a href="https://drive.google.com/drive/folders/1oZwLB5KYi3NjMGEDx-5dLF9fKt_pstpe?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-download" id="res-product-link">
+        <span>🚀 Google Drive पर eBook खोलें व डाउनलोड करें</span>
+        <span>➔</span>
+      </a>
+    </div>
+
+    <div class="instructions">
+      <strong>महत्वपूर्ण सूचना (Helpful Instructions):</strong><br>
+      • कृपया इस Google Drive लिंक को अपने ब्राउज़र में बुकमार्क (Bookmark) कर लें ताकि आप कभी भी इसे पढ़ सकें।<br>
+      • PDF को अपने फ़ोन या लैपटॉप पर डाउनलोड करके सुरक्षित रख लें।
+    </div>
+
+    <a href="https://wa.me/919910124156?text=Hi%2C%20I%20have%20purchased%20Dhan%20Akarshan%20Rahasya" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
+      <span>💬 WhatsApp Support पर संपर्क करें</span>
+    </a>
+
+    <a href="/" class="home-link">← वापस होमपेज पर जाएं (Back to Homepage)</a>
+  </div>
+
+  <div class="card" id="state-failed" style="display: none;">
+    <div class="badge-icon badge-pending">!</div>
+    <h1 id="fail-title">भुगतान अधूरा या लंबित है</h1>
+    <p class="tagline" id="fail-desc">Payment Incomplete / Pending</p>
+
+    <div class="order-box">
+      <div class="order-row">
+        <span class="order-label">Order ID:</span>
+        <span class="order-val" id="fail-order-id">-</span>
+      </div>
+      <div class="order-row">
+        <span class="order-label">Status:</span>
+        <span class="order-val" id="fail-status" style="color: #facc15;">PENDING</span>
+      </div>
+    </div>
+
+    <p style="font-size: 13px; color: #b5a489; margin-bottom: 20px; line-height: 1.5;">
+      यदि आपके खाते से पैसे कट चुके हैं, तो कृपया 5-10 मिनट प्रतीक्षा करें या सहायता के लिए व्हाट्सएप पर मैसेज भेजें।
+    </p>
+
+    <a href="/?buy=1" class="btn-download" style="background: linear-gradient(135deg, #f5d47a 0%, #d4af37 100%);">
+      पुनः प्रयास करें (Retry Payment)
+    </a>
+
+    <br><br>
+    <a href="mailto:tonikpvt@gmail.com?subject=Payment%20Pending%20Support%20-%20BLIX%20ENTERPRISE" class="whatsapp-btn" style="background: rgba(212, 175, 55, 0.15); border: 1px solid rgba(212, 175, 55, 0.4); color: #fcedcf;">
+      ✉ Contact Support (tonikpvt@gmail.com)
+    </a>
+  </div>
+
+  <!-- BLIX ENTERPRISE FOOTER -->
+  <footer style="margin-top: 40px; text-align: center; font-size: 13px; color: #9ca3af; width: 100%; max-width: 600px;">
+    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 12px 18px; margin-bottom: 16px;">
+      <a href="contact.html" style="color: #9ca3af; text-decoration: none;">Contact</a>
+      <a href="terms.html" style="color: #9ca3af; text-decoration: none;">Terms &amp; Conditions</a>
+      <a href="privacy.html" style="color: #9ca3af; text-decoration: none;">Privacy Policy</a>
+      <a href="refund.html" style="color: #9ca3af; text-decoration: none;">Refund Policy</a>
+      <a href="license.html" style="color: #9ca3af; text-decoration: none;">License Terms</a>
+    </div>
+    <div style="letter-spacing: 2px; text-transform: uppercase; font-size: 12px; color: #83786a; margin-bottom: 8px;">
+      PRODUCT BY <span style="color: #ffffff; font-weight: 700;">BLIX ENTERPRISE</span>
+    </div>
+    <div style="font-size: 12px; color: #9ca3af;">
+      OFFICIAL CUSTOMER SUPPORT EMAIL: <a href="mailto:tonikpvt@gmail.com" style="color: #d4af37; text-decoration: none;">tonikpvt@gmail.com</a>
+    </div>
+  </footer>
+
+  <script>
+    async function verifyPayment() {
+      const params = new URLSearchParams(window.location.search);
+      const orderId = params.get('order_id');
+
+      if (!orderId) {
+        showError('No Order ID found in URL', 'NOT_FOUND');
+        return;
+      }
+
+      try {
+        const resp = await fetch('/api/order?order_id=' + encodeURIComponent(orderId));
+        const data = await resp.json();
+
+        if (data.is_paid || data.order_status === 'PAID') {
+          showSuccess(data);
+        } else {
+          showPending(data);
+        }
+      } catch (err) {
+        console.error('Verify error:', err);
+        showError(err.message, 'NETWORK_ERROR');
+      }
+    }
+
+    function showSuccess(data) {
+      document.getElementById('state-loading').style.display = 'none';
+      document.getElementById('state-failed').style.display = 'none';
+      document.getElementById('state-success').style.display = 'block';
+
+      document.getElementById('res-order-id').textContent = data.order_id || '-';
+      const cust = data.customer_details || {};
+      document.getElementById('res-name').textContent = cust.customer_name || 'Valued Customer';
+      document.getElementById('res-email').textContent = cust.customer_email || 'Registered';
+      if (data.order_amount) {
+        document.getElementById('res-amount').textContent = '₹' + data.order_amount;
+      }
+      if (data.product_link) {
+        document.getElementById('res-product-link').href = data.product_link;
+      }
+    }
+
+    function showPending(data) {
+      document.getElementById('state-loading').style.display = 'none';
+      document.getElementById('state-success').style.display = 'none';
+      document.getElementById('state-failed').style.display = 'block';
+
+      document.getElementById('fail-order-id').textContent = data.order_id || '-';
+      document.getElementById('fail-status').textContent = data.order_status || 'PENDING';
+    }
+
+    function showError(msg, code) {
+      document.getElementById('state-loading').style.display = 'none';
+      document.getElementById('state-success').style.display = 'none';
+      document.getElementById('state-failed').style.display = 'block';
+
+      document.getElementById('fail-title').textContent = 'सत्यापन में समस्या आई';
+      document.getElementById('fail-desc').textContent = msg;
+      document.getElementById('fail-status').textContent = code;
+    }
+
+    verifyPayment();
+  </script>
+</body>
+</html>
