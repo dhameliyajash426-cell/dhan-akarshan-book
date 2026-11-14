@@ -4,90 +4,107 @@ const path = require('path');
 const url = require('url');
 const apiOrderHandler = require('./api/order');
 
-const PORT = process.env.PORT || 8000;
+// Pre-load all HTML files statically so Vercel Node File Trace (NFT) bundles them
+const indexHtml = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf-8');
+const contactHtml = fs.readFileSync(path.join(__dirname, 'contact.html'), 'utf-8');
+const termsHtml = fs.readFileSync(path.join(__dirname, 'terms.html'), 'utf-8');
+const privacyHtml = fs.readFileSync(path.join(__dirname, 'privacy.html'), 'utf-8');
+const refundHtml = fs.readFileSync(path.join(__dirname, 'refund.html'), 'utf-8');
+const licenseHtml = fs.readFileSync(path.join(__dirname, 'license.html'), 'utf-8');
+const verifyHtml = fs.readFileSync(path.join(__dirname, 'verify.html'), 'utf-8');
 
-const server = http.createServer(async (req, res) => {
+const htmlPages = {
+  '/': indexHtml,
+  '/index.html': indexHtml,
+  '/contact': contactHtml,
+  '/contact.html': contactHtml,
+  '/terms': termsHtml,
+  '/terms.html': termsHtml,
+  '/privacy': privacyHtml,
+  '/privacy.html': privacyHtml,
+  '/refund': refundHtml,
+  '/refund.html': refundHtml,
+  '/license': licenseHtml,
+  '/license.html': licenseHtml,
+  '/verify': verifyHtml,
+  '/verify.html': verifyHtml
+};
+
+const handler = async (req, res) => {
   const parsed = url.parse(req.url, true);
-  const pathname = parsed.pathname || '/';
+  let pathname = parsed.pathname || '/';
+  if (pathname.length > 1 && pathname.endsWith('/')) {
+    pathname = pathname.slice(0, -1);
+  }
 
-  // API handler
+  // Response helpers for Express/Vercel compatibility
+  if (!res.status) {
+    res.status = (code) => { res.statusCode = code; return res; };
+  }
+  if (!res.json) {
+    res.json = (data) => {
+      res.setHeader('Content-Type', 'application/json');
+      res.end(JSON.stringify(data));
+    };
+  }
+
+  // 1. API: /api/order & /api/create-order
   if (pathname === '/api/order' || pathname === '/api/create-order') {
     req.query = parsed.query;
     if (req.method === 'POST') {
       let bodyStr = '';
-      req.on('data', chunk => { bodyStr += chunk; });
-      req.on('end', async () => {
-        try { req.body = JSON.parse(bodyStr || '{}'); } catch (e) { req.body = {}; }
-        res.status = (code) => { res.statusCode = code; return res; };
-        res.json = (data) => {
-          res.setHeader('Content-Type', 'application/json');
-          res.end(JSON.stringify(data));
-        };
-        await apiOrderHandler(req, res);
-      });
-      return;
+      if (req.body) {
+        bodyStr = typeof req.body === 'string' ? req.body : JSON.stringify(req.body);
+      } else {
+        bodyStr = await new Promise(resolve => {
+          let b = '';
+          req.on('data', chunk => b += chunk);
+          req.on('end', () => resolve(b));
+        });
+      }
+      try { req.body = JSON.parse(bodyStr || '{}'); } catch (e) { req.body = {}; }
+      return await apiOrderHandler(req, res);
     } else {
-      res.status = (code) => { res.statusCode = code; return res; };
-      res.json = (data) => {
-        res.setHeader('Content-Type', 'application/json');
-        res.end(JSON.stringify(data));
-      };
       return await apiOrderHandler(req, res);
     }
   }
 
-  // Static images
+  // 2. Preloaded HTML Pages (Instant in-memory delivery)
+  if (htmlPages[pathname]) {
+    res.writeHead(200, {
+      'Content-Type': 'text/html; charset=utf-8',
+      'Cache-Control': 'public, max-age=0, must-revalidate'
+    });
+    return res.end(htmlPages[pathname]);
+  }
+
+  // 3. Static Images
   if (pathname.startsWith('/images/')) {
     const filePath = path.join(__dirname, pathname);
     if (fs.existsSync(filePath)) {
       const ext = path.extname(filePath).toLowerCase();
       const mime = ext === '.png' ? 'image/png' : 'image/jpeg';
-      res.writeHead(200, { 'Content-Type': mime });
+      res.writeHead(200, {
+        'Content-Type': mime,
+        'Cache-Control': 'public, max-age=31536000, immutable'
+      });
       return fs.createReadStream(filePath).pipe(res);
     }
   }
 
-  // Static Policy & Verification Pages
-  const staticPages = {
-    '/contact': 'contact.html',
-    '/contact.html': 'contact.html',
-    '/terms': 'terms.html',
-    '/terms.html': 'terms.html',
-    '/privacy': 'privacy.html',
-    '/privacy.html': 'privacy.html',
-    '/refund': 'refund.html',
-    '/refund.html': 'refund.html',
-    '/license': 'license.html',
-    '/license.html': 'license.html',
-    '/verify': 'verify.html',
-    '/verify.html': 'verify.html',
-  };
+  // 4. Default fallback: serve Landing Page
+  res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+  return res.end(indexHtml);
+};
 
-  if (staticPages[pathname]) {
-    const p = path.join(__dirname, staticPages[pathname]);
-    if (fs.existsSync(p)) {
-      res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-      return fs.createReadStream(p).pipe(res);
-    }
-  }
+// Export handler for Vercel Serverless Function
+module.exports = handler;
 
-  // Static Landing Page (Root)
-  if (pathname === '/' || pathname === '/index.html') {
-    const indexPath = path.join(__dirname, 'index.html');
-    if (fs.existsSync(indexPath)) {
-      res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
-      return fs.createReadStream(indexPath).pipe(res);
-    }
-  }
-
-  res.writeHead(404, { 'Content-Type': 'text/plain' });
-  res.end('Not Found');
-});
-
-if (require.main === module) {
+// Local Node.js server support
+if (!process.env.VERCEL) {
+  const PORT = process.env.PORT || 3000;
+  const server = http.createServer(handler);
   server.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
   });
 }
-
-module.exports = server;

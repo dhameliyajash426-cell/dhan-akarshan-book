@@ -481,6 +481,24 @@ class CashfreeServerHandler(http.server.SimpleHTTPRequestHandler):
                 self.send_html_response("<pre style='background:#111;color:#eee;padding:20px;'>No orders logged yet.</pre>")
             return
 
+        # Clean policy routes
+        clean_routes = {
+            '/contact': 'contact.html',
+            '/terms': 'terms.html',
+            '/privacy': 'privacy.html',
+            '/refund': 'refund.html',
+            '/license': 'license.html'
+        }
+        if path in clean_routes and os.path.exists(clean_routes[path]):
+            with open(clean_routes[path], 'rb') as f:
+                content = f.read()
+            self.send_response(200)
+            self.send_header('Content-Type', 'text/html; charset=utf-8')
+            self.send_header('Content-Length', str(len(content)))
+            self.end_headers()
+            self.wfile.write(content)
+            return
+
         # Fallback to standard file serving
         return super().do_GET()
 
