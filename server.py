@@ -43,7 +43,7 @@ PRODUCT_LINK = os.environ.get(
     'PRODUCT_LINK',
     'https://drive.google.com/drive/folders/1oZwLB5KYi3NjMGEDx-5dLF9fKt_pstpe?usp=sharing'
 )
-DEFAULT_AMOUNT = float(os.environ.get('ORDER_AMOUNT', '299.00'))
+DEFAULT_AMOUNT = float(os.environ.get('ORDER_AMOUNT', '149.00'))
 CURRENCY = 'INR'
 SUPPORT_WHATSAPP = '919910124156'
 BASE_URL = os.environ.get('BASE_URL', '').rstrip('/')

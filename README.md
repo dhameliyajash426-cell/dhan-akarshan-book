@@ -7,7 +7,7 @@
 ## 🌟 फीचर्स (Features)
 
 1. **ऑल-इन-वन लैंडिंग पेज (`index.html`)**:
-   - पेज पर मौजूद सभी 16+ **"Get Digital PDF at ₹299"** बटनों पर कैशफ्री का चेकआउट मोडल (Modal) कनेक्टेड है।
+   - पेज पर मौजूद सभी 16+ **"Get Digital PDF at ₹149 · Only 1 Left!"** बटनों पर कैशफ्री का चेकआउट मोडल (Modal) कनेक्टेड है।
    - यूजर का नाम, ईमेल आईडी और 10-अंकों का व्हाट्सएप नंबर प्राप्त करता है।
    - मोबाइल और डेस्कटॉप दोनों के लिए 100% रिस्पॉन्सिव।
 
@@ -62,9 +62,9 @@ CASHFREE_SECRET_KEY=your_cashfree_secret_key_here
 CASHFREE_API_VERSION=2023-08-01
 
 # Product Details
-ORDER_AMOUNT=299.00
+ORDER_AMOUNT=149.00
 PRODUCT_LINK=https://drive.google.com/drive/folders/1oZwLB5KYi3NjMGEDx-5dLF9fKt_pstpe?usp=sharing
-SUPPORT_WHATSAPP=919910124156
+SUPPORT_EMAIL=tonikpvt@gmail.com
 
 # Live Domain (लाइव करने पर अपना डोमेन यहाँ डालें)
 BASE_URL=https://dhan.letsdfy.in
@@ -102,17 +102,17 @@ BASE_URL=https://dhan.letsdfy.in
 ```
 [ कस्टमर लैंडिंग पेज पर आता है ]
             ↓
-[ किसी भी "Get Digital PDF ₹299" बटन पर क्लिक करता है ]
+[ किसी भी "Get Digital PDF ₹149 · Only 1 Left!" बटन पर क्लिक करता है ]
             ↓
-[ चेकआउट पॉपअप खुलता है: नाम, ईमेल और मोबाइल नंबर भरता है ]
+[ चेकआउट पॉपअप खुलता है: 10 अंकों का मोबाइल नंबर भरता है ]
             ↓
-[ "Pay ₹299 & Download" पर क्लिक करता है ]
+[ "Pay ₹149 & Download eBook · Only 1 Left!" पर क्लिक करता है ]
             ↓
 [ सर्वर कैशफ्री प्रोडक्शन API से ऑर्डर बनाता है ]
             ↓
 [ कैशफ्री का सुरक्षित पेमेंट गेटवे खुलता है (UPI, GPay, PhonePe, Cards) ]
             ↓
-[ कस्टमर ₹299 का भुगतान करता है ]
+[ कस्टमर ₹149 का भुगतान करता है ]
             ↓
 [ कैशफ्री /verify?order_id=... पर रिडायरेक्ट करता है ]
             ↓

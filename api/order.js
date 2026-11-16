@@ -57,7 +57,7 @@ module.exports = async (req, res) => {
       const cleanPhone = rawPhone.length >= 10 ? rawPhone.slice(-10) : '9999999999';
       const customer_name = body.customer_name || 'Customer';
       const customer_email = body.customer_email || `customer${cleanPhone.slice(-4)}@digital.in`;
-      const amount = Number(body.amount) || 299.0;
+      const amount = Number(body.amount) || 149.0;
 
       const orderId = `order_${Date.now()}_${Math.floor(100 + Math.random() * 900)}`;
 
